@@ -1,0 +1,10 @@
+// Специально неправильные переопределения для задания 6.
+class BaseMethods {
+    public Number amount(Object value) { return 1; }
+    public void send(String value) {}
+}
+class IncorrectMethods extends BaseMethods {
+    @Override protected Number amount(Object value) { return 1; } // доступ уже, чем public
+    @Override public String send(String value) { return value; } // несовместимый результат
+    @Override public void send(Integer value) {} // другой параметр — перегрузка, не override
+}

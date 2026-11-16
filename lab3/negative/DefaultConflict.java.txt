@@ -1,0 +1,4 @@
+// Намеренно не компилируется: два несовместимых default-метода.
+interface A { default String message() { return "A"; } }
+interface B { default String message() { return "B"; } }
+class Conflict implements A, B {}

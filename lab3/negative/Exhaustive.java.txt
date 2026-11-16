@@ -1,0 +1,13 @@
+// Намеренно не компилируется: добавлен третий вариант, но switch не дополнен.
+sealed interface Result permits Yes, No, Later {}
+record Yes() implements Result {}
+record No() implements Result {}
+record Later() implements Result {}
+class Exhaustive {
+    static String describe(Result result) {
+        return switch (result) {
+            case Yes x -> "yes";
+            case No x -> "no";
+        };
+    }
+}
