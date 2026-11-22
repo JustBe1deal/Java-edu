@@ -1,8 +1,18 @@
 # Лабораторная работа 4. Исключения и тестирование
 
+## Где что находится
+
+Исходники расположены в `src/main/java/coursehub/practice4/`, каждый основной тип — в отдельном файле. `Practice4` запускает демонстрацию.
+
+- `Course`, `CourseCode`, `Decision`, `Reason` — модель и результаты доменных проверок.
+- `CourseImportException`, `InfrastructureException`, `EnrollmentRejectedException` — типы ошибок с контекстом.
+- `EnrollmentRules` выполняет поиск и проверку зачисления; `CourseImporter` разбирает записи и импортирует их из Reader.
+- `TracedResource`, `ResourceDemo`, `ExceptionExamples` показывают закрытие ресурсов, suppressed, стек и finally.
+- `EnrollmentUseCase`, `UseCaseResult`, `ErrorMapper`, `PublicError` составляют публичную границу обработки ошибок. Тесты находятся в `src/test`.
+
 ## Запуск
 
-Нужны JDK 21 и Maven. В PowerShell из `lab4` выполните `mvn test`, затем `java -cp target/classes coursehub.practice4.Practice4` для демонстрации stack trace и finally. Исходный код — `src/main/java/coursehub/practice4/Practice4.java`, тесты — `src/test/java/coursehub/practice4/Practice4Test.java`. Тесты не используют общих изменяемых static-полей, текущую папку и порядок выполнения. `pom.xml` подключает JUnit Jupiter, compiler plugin и Surefire.
+Нужны JDK 21 и Maven. В PowerShell из `lab4` выполните `mvn test`, затем `java -cp target/classes coursehub.practice4.Practice4` для демонстрации stack trace и finally. Точка входа — `src/main/java/coursehub/practice4/Practice4.java`, остальные исходники находятся рядом, тесты — `src/test/java/coursehub/practice4/Practice4Test.java`. Тесты не используют общих изменяемых static-полей, текущую папку и порядок выполнения. `pom.xml` подключает JUnit Jupiter, compiler plugin и Surefire.
 
 ## 1. Чтение stack trace
 

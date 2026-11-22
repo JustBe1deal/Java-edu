@@ -1,18 +1,29 @@
 # Лабораторная работа № 7. Файлы и потоки в Java
 
-Программа хранит каталог курсов и последовательно демонстрирует девять заданий. Внешние библиотеки не нужны; требуется JDK 11 или новее. Исходники находятся в `src/Lab7.java`, самостоятельные проверки — в `src/Lab7Test.java`.
+Программа хранит каталог курсов и последовательно демонстрирует девять заданий. Внешние библиотеки не нужны; требуется JDK 11 или новее. Основные исходники находятся в `src/main/java/coursehub/practice7/`, а самостоятельные проверки — в `src/test/java/coursehub/practice7/Lab7Test.java`.
+
+## Где что находится
+
+Основные исходники находятся в `src/main/java/coursehub/practice7/` и принадлежат пакету `coursehub.practice7`:
+
+- `Course`, `Counts`, `MoveResult`, `ImportError`, `ImportResult` — модель и результаты операций.
+- `TextCatalog` отвечает за UTF-8 и Reader/Writer, `ResourceExamples` — за try-with-resources и ленивые строки.
+- `BinaryCatalog` читает простой бинарный формат, `VersionedCatalog` — формат с контрольной суммой и миграцией; общие константы и проверка количества вынесены в `BinaryFormatSupport`.
+- `AtomicCatalogWriter` выполняет запись через временный файл и move; `CatalogImporter` содержит атомарный и потоковый импорт.
+- `Lab7` запускает примеры, `Lab7Test` — самостоятельные проверки без JUnit.
 
 ## Запуск в PowerShell
 
 Находясь в папке `lab7`:
 
 ```powershell
-javac -encoding UTF-8 -d out src/Lab7.java src/Lab7Test.java
-java -cp out Lab7Test
-java -cp out Lab7
+$sources = Get-ChildItem src -Recurse -Filter '*.java' | ForEach-Object FullName
+javac --release 11 -encoding UTF-8 -d out $sources
+java -cp out coursehub.practice7.Lab7Test
+java -cp out coursehub.practice7.Lab7
 ```
 
-Пример создаёт папку `lab7-output` в текущем каталоге и перезаписывает в ней файлы с именами, используемыми демонстрацией. Можно указать другую папку: `java -cp out Lab7 C:\temp\my-courses`. Тесты создают временный каталог и удаляют его после выполнения. Компиляция требует именно JDK: команда `javac` должна находиться в PATH.
+Пример создаёт папку `lab7-output` в текущем каталоге и перезаписывает в ней файлы с именами, используемыми демонстрацией. Можно указать другую папку: `java -cp out coursehub.practice7.Lab7 C:\temp\my-courses`. Тесты создают временный каталог и удаляют его после выполнения. Компиляция требует именно JDK: команда `javac` должна находиться в PATH.
 
 ## Модель и текстовый формат
 

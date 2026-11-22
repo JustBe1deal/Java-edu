@@ -30,11 +30,11 @@ public final class ExtraExamples {
         Set<StableCourseKey> stableSet = new HashSet<>(); Map<StableCourseKey,String> stableMap = new HashMap<>();
         stableSet.add(stable); stableMap.put(stable,"данные"); stable.title="Новое название";
         System.out.println("Стабильный ключ: " + stableSet.contains(stable) + ", " + stableMap.get(stable));
-        System.out.println("Максимумы: " + Practice5.max(List.of(1,3,2)) + ", " + Practice5.max(List.of("a","z")) + ", " + Practice5.max(List.of(new Rating(1),new Rating(2))));
+        System.out.println("Максимумы: " + CollectionExercises.max(List.of(1,3,2)) + ", " + CollectionExercises.max(List.of("a","z")) + ", " + CollectionExercises.max(List.of(new Rating(1),new Rating(2))));
         List<Integer> source = List.of(1,2); List<Number> destination = new ArrayList<>();
-        Practice5.copy(source, destination); System.out.println("PECS: " + destination);
-        Practice5.Result<String> text = Practice5.Result.success("готово");
-        Practice5.Result<Integer> number = Practice5.Result.success(42);
+        CollectionExercises.copy(source, destination); System.out.println("PECS: " + destination);
+        Result<String> text = Result.success("готово");
+        Result<Integer> number = Result.success(42);
         System.out.println("Результаты: " + text.value() + ", " + number.value());
         MutableKey key=new MutableKey(1,"Java"); Set<MutableKey> keys=new HashSet<>(); keys.add(key); key.title="C";
         System.out.println("Изменённый ключ найден: " + keys.contains(key));

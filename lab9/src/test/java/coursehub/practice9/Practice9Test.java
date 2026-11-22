@@ -2,13 +2,12 @@ package coursehub.practice9;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import static org.junit.jupiter.api.Assertions.*;
-import static coursehub.practice9.Practice9.*;
 import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 class Practice9Test {
-    @Test @Timeout(10) void forcedRaceAlwaysLosesUpdate() throws Exception { for(int i=0;i<20;i++) assertEquals(1,forcedLostUpdate()); }
+    @Test @Timeout(10) void forcedRaceAlwaysLosesUpdate() throws Exception { for(int i=0;i<20;i++) assertEquals(1,RaceDemonstration.forcedLostUpdate()); }
     @Test @Timeout(10) void synchronizedCountersDoNotLoseUpdates() throws Exception {
         var a=new SynchronizedCounter(); var b=new BlockCounter(); ExecutorService pool=Executors.newFixedThreadPool(4);
         try { var fs=new ArrayList<Future<?>>(); for(int i=0;i<4;i++) fs.add(pool.submit(()->{ for(int j=0;j<10000;j++){ a.increment(); b.increment(); } }));
@@ -27,8 +26,8 @@ class Practice9Test {
         } finally { start.countDown(); pool.shutdownNow(); assertTrue(pool.awaitTermination(2,TimeUnit.SECONDS)); }
     }
     @Test @Timeout(8) void boundedQueueProcessesEveryJobOnce() throws Exception {
-        assertEquals(List.of(2,2,4,10),processJobs(List.of(5,1,2,1),2,3,1,Duration.ofSeconds(3)));
-        assertEquals(List.of(),processJobs(List.of(),2,2,1,Duration.ofSeconds(3)));
+        assertEquals(List.of(2,2,4,10),QueueProcessor.processJobs(List.of(5,1,2,1),2,3,1,Duration.ofSeconds(3)));
+        assertEquals(List.of(),QueueProcessor.processJobs(List.of(),2,2,1,Duration.ofSeconds(3)));
     }
     @Test @Timeout(10) void bothEnrollmentImplementationsPreserveInvariants() throws Exception {
         for (Enrollment enrollment : List.of(new LockedEnrollment(4),new ConcurrentEnrollment(4))) {

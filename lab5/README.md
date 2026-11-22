@@ -1,8 +1,12 @@
 # Лабораторная работа 5. Коллекции и generics
 
+## Где что находится
+
+Папка `src/main/java/coursehub/practice5/` содержит отдельные классы: `Course` и `CourseCode` описывают данные, `CollectionExercises` — общие методы для списков, индекса и generics, `Result` — типизированный результат. `Repository` и `MemoryRepository` отвечают за хранение, `TagIndex` — за обратный индекс, `LruCache` — за вытеснение, `Graph` — за prerequisites. `Practice5` запускает пример, а `ExtraExamples` содержит короткие эксперименты с коллекциями и ключами. Тесты находятся в `src/test`.
+
 ## Сборка и запуск
 
-Нужны JDK 21 и Maven. В папке `lab5` выполните `mvn test`, затем `java -cp target/classes coursehub.practice5.Practice5` и `java -cp target/classes coursehub.practice5.ExtraExamples`. Исходники: `src/main/java/coursehub/practice5/Practice5.java` и `ExtraExamples.java`. Тесты находятся в `src/test`. Время в эксперименте зависит от компьютера, JVM и прогрева: результаты не являются микробенчмарком и их нельзя считать универсальными константами.
+Нужны JDK 21 и Maven. В папке `lab5` выполните `mvn test`, затем `java -cp target/classes coursehub.practice5.Practice5` и `java -cp target/classes coursehub.practice5.ExtraExamples`. Исходники находятся в `src/main/java/coursehub/practice5/`, точки запуска — `Practice5.java` и `ExtraExamples.java`. Тесты находятся в `src/test`. Время в эксперименте зависит от компьютера, JVM и прогрева: результаты не являются микробенчмарком и их нельзя считать универсальными константами.
 
 ## 1. Список и порядок
 

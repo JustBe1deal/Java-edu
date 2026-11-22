@@ -1,5 +1,16 @@
 # Лабораторная работа 3. Полиморфизм и проектирование
 
+## Где что находится
+
+Исходники расположены в `src/main/java/coursehub/practice3/`; каждый основной тип находится в собственном `.java`-файле. `Practice3` только запускает демонстрацию.
+
+- `Course`, `CourseFormatter` и три реализации форматировщика — модель и форматирование; `Formatting` содержит обход массива.
+- `NotificationSender`, `AbstractNotificationSender`, `EmailSender`, `ConsoleSender`, `LoggingSender` и `MetricsSender` — отправители и декораторы.
+- `CourseReader`, `CourseWriter`, `CourseRepository`, `ReadOnlyCourses` — разделённые контракты доступа.
+- `Applicant`, `EnrollmentResult`, `Accepted`, `Rejected`, `WaitListed`, `EnrollmentPolicy`, пять классов политик, `EnrollmentPolicies`, `EnrollmentService` — движок зачисления.
+- `FirstGreeting`, `SecondGreeting`, `Greeting` — конфликт default-методов; `Delivery`, `Payment`, их перечисления, `Offering`, `Offerings` — независимые компоненты курса.
+- `ExtraExamples` группирует небольшие самостоятельные примеры о равенстве и переопределении. Тесты находятся в `src/test`, намеренно некомпилирующиеся примеры — в `negative`.
+
 ## Как собрать и запустить
 
 Нужны JDK 21 и Maven 3.8+; проверьте `java -version`, `javac -version`, `mvn -version`. В PowerShell из папки `lab3`:
@@ -11,7 +22,7 @@ java -cp target/classes coursehub.practice3.Practice3
 java -cp target/classes coursehub.practice3.ExtraExamples
 ```
 
-Код находится в `src/main/java/coursehub/practice3/Practice3.java`, дополнительные примеры — в `ExtraExamples.java`, тесты — в `src/test`. Типы объявлены вложенными, чтобы в одной лабораторной их было удобно читать вместе. `record` — краткая запись неизменяемого носителя данных: Java сама создаёт конструктор, методы чтения, `equals`, `hashCode`, `toString`. Maven загружает JUnit при первом запуске.
+Точка входа — `Practice3.java`, дополнительные примеры — в `ExtraExamples.java`, тесты — в `src/test`. Основные типы находятся в отдельных файлах. `record` — краткая запись неизменяемого носителя данных: Java сама создаёт конструктор, методы чтения, `equals`, `hashCode`, `toString`. Maven загружает JUnit при первом запуске.
 
 ## 1. Один контракт, две реализации
 

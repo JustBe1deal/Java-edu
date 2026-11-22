@@ -1,5 +1,9 @@
 # Практическая работа 8. Лямбды и Stream API
 
+## Где что находится
+
+Код расположен в `src/main/java/coursehub/practice8/`. `Course`, `Level`, `Totals`, `LevelSummary`, `Stats` — отдельные модели. `CourseSorting` сортирует курсы, `TopicIndex` нормализует темы и строит обратный индекс, `CourseStatistics` считает показатели и ищет самый длинный курс. `CourseStatsCollector` и его внутренний для пакета `StatsAccumulator` реализуют collector. `EnrollmentEvent`, `CourseResult`, `Report`, `EnrollmentReports` и вспомогательная пара `Pair` отвечают за однопроходный отчёт. `Practice8` запускает пример, тесты находятся в `src/test`.
+
 ## Запуск
 
 Нужны JDK 21 и Maven. В PowerShell из папки `E:\Java-edu\lab8`:
@@ -9,7 +13,7 @@ mvn test
 java -cp target/classes coursehub.practice8.Practice8
 ```
 
-Исходный код — `src/main/java/coursehub/practice8/Practice8.java`, тесты — `src/test/java/coursehub/practice8/Practice8Test.java`. После `mvn test` запускаются JUnit-проверки; `main` печатает небольшой пример. `record` — краткая форма неизменяемой модели: Java генерирует конструктор, методы чтения, equals и hashCode. Список модулей копируется в конструкторе, поэтому внешнее изменение списка не изменит курс.
+Точка входа — `src/main/java/coursehub/practice8/Practice8.java`, остальные исходники находятся рядом, тесты — `src/test/java/coursehub/practice8/Practice8Test.java`. После `mvn test` запускаются JUnit-проверки; `main` печатает небольшой пример. `record` — краткая форма неизменяемой модели: Java генерирует конструктор, методы чтения, equals и hashCode. Список модулей копируется в конструкторе, поэтому внешнее изменение списка не изменит курс.
 
 ## Модель данных
 

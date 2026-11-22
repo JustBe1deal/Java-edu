@@ -9,8 +9,8 @@ public final class ExtraExamples {
         String literal="Java", fromNew=new String("Java"), compile="Ja"+"va", prefix="Ja", runtime=prefix+"va";
         System.out.println("identity: " + (literal==compile) + ", " + (literal==fromNew) + ", " + (literal==runtime) + ", intern=" + (literal==runtime.intern()));
         System.out.println("equals: " + literal.equals(fromNew));
-        long start=System.nanoTime(); String slow=Practice6.reportPlus(10000); long plus=System.nanoTime()-start;
-        start=System.nanoTime(); String fast=Practice6.reportBuilder(10000); long builder=System.nanoTime()-start;
+        long start=System.nanoTime(); String slow=ReportBuilder.reportPlus(10000); long plus=System.nanoTime()-start;
+        start=System.nanoTime(); String fast=ReportBuilder.reportBuilder(10000); long builder=System.nanoTime()-start;
         System.out.println("Отчёты равны: "+slow.equals(fast)+"; +="+plus+" ns; builder="+builder+" ns");
         Integer absent=null;
         try { int n=absent; System.out.println(n); } catch (NullPointerException e) { System.out.println("Unboxing null: "+e.getClass().getSimpleName()); }
@@ -19,7 +19,7 @@ public final class ExtraExamples {
         System.out.println("double constructor: "+new BigDecimal(0.1));
         System.out.println("valueOf: "+BigDecimal.valueOf(0.1)+"; string: "+new BigDecimal("0.1"));
         System.out.println("Три цены: "+new BigDecimal("0.10").add(new BigDecimal("0.20")).add(new BigDecimal("0.30")));
-        System.out.println("Выборка: "+Practice6.randomSample(new Random(42),5,0,100));
+        System.out.println("Выборка: "+RandomSampleService.randomSample(new Random(42),5,0,100));
         System.out.println("Math: min="+Math.min(1.2,2.3)+", max="+Math.max(1.2,2.3)+", round="+Math.round(1.5));
         LocalDate startDate=LocalDate.of(2024,2,29);
         System.out.println("Модули: "+startDate+", "+startDate.plusWeeks(1)+", "+startDate.plusWeeks(2)+"; последний день="+startDate.plusDays(20)+"; leap="+startDate.isLeapYear());

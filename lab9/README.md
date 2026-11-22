@@ -1,5 +1,9 @@
 # Практическая работа 9. Основы конкурентности
 
+## Где что находится
+
+Код расположен в `src/main/java/coursehub/practice9/`. Каждый счётчик (`UnsafeCounter`, `SynchronizedCounter`, `BlockCounter`) и каждый worker (`Worker`, `UnsafeWorker`) находится в отдельном файле; `RaceDemonstration` воспроизводит потерянное обновление. `SessionRegistry` хранит сессии. `QueueProcessor` реализует очередь и producer-consumer, `Job` описывает заявку, `ExecutorSupport` закрывает пул. `Enrollment`, `LockedEnrollment` и `ConcurrentEnrollment` задают два способа записи на курс. `Practice9` запускает пример, `Practice9Test` содержит проверки JUnit.
+
 ## Запуск
 
 Нужны JDK 21 и Maven. Откройте PowerShell в `E:\Java-edu\lab9`:
@@ -9,7 +13,7 @@ mvn test
 java -cp target/classes coursehub.practice9.Practice9
 ```
 
-`src/main/java/coursehub/practice9/Practice9.java` содержит решения, `src/test/java/coursehub/practice9/Practice9Test.java` — тесты JUnit. При разных запусках потоки могут планироваться в разном порядке, поэтому тесты не рассчитывают на паузу `Thread.sleep`. Результат обработки очереди сортируется, чтобы вывод был воспроизводимым.
+`src/main/java/coursehub/practice9/Practice9.java` запускает демонстрацию, остальные решения находятся в отдельных файлах рядом, `src/test/java/coursehub/practice9/Practice9Test.java` — тесты JUnit. При разных запусках потоки могут планироваться в разном порядке, поэтому тесты не рассчитывают на паузу `Thread.sleep`. Результат обработки очереди сортируется, чтобы вывод был воспроизводимым.
 
 ## 1. Потерянные инкременты
 
